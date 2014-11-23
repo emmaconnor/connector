@@ -19,8 +19,15 @@ class AI(object):
     def neg_max(self, board, depth, my_turn, alpha, beta):
         """Recursively search for the best move."""
         wg = board.get_winning_group()
+        if wg is not None:
+            sign = 1
+            if not my_turn:
+                sign = -sign
+            if board[wg[0]] != self.t:
+                sign = -sign
+            return None, inf*sign
 
-        if depth == 0 or wg is not None:
+        if depth == 0:
             score = self.score_state(board, self.t)
             if not my_turn:
                 score = -score
@@ -47,9 +54,12 @@ class AI(object):
             if max_score is None or score > max_score:
                 max_score = score
                 max_move = m
+            if depth == self.depth:
+                print "[%s] %s: %s" % (self.t, m, score)
             alpha = max(alpha, score)
             if alpha >= beta:
                 break
+
 
         if max_score is None:
             return None, self.score_state(board, self.t)

@@ -1,3 +1,21 @@
+try:
+    import colorama
+except ImportError:
+    colors = {
+        'X': '',
+        'O': '',
+        '.': '',
+    }
+    color_reset = ''
+else:
+    colorama.init()
+    colors = {
+        'X': colorama.Back.RED,
+        'O': colorama.Back.BLUE,
+        '.': '',
+    }
+    color_reset = colorama.Back.RESET
+
 class Board:
     """The game board."""
     
@@ -11,7 +29,8 @@ class Board:
         for r in range(self.rows-1, -1, -1):
             line = ''
             for c in range(self.cols):
-                line += self[r, c] + ' '
+                t = self[r, c]
+                line += colors[t] + t + color_reset + ' '
             print line
 
         line = ''
