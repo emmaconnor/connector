@@ -9,7 +9,7 @@ def make_player(p_type, marker):
     if p_type[0] == 'h':
         player = Human(marker)
     else:
-        player = AI(marker, 4)
+        player = AI(marker, 2)
     return player
 
 
