@@ -10,11 +10,11 @@ except ImportError:
 else:
     colorama.init()
     colors = {
-        'X': colorama.Back.RED,
-        'O': colorama.Back.BLUE,
+        'X': colorama.Fore.RED,
+        'O': colorama.Fore.YELLOW,
         '.': '',
     }
-    color_reset = colorama.Back.RESET
+    color_reset = colorama.Fore.RESET
 
 class Board:
     """The game board."""

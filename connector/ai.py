@@ -54,8 +54,8 @@ class AI(object):
             if max_score is None or score > max_score:
                 max_score = score
                 max_move = m
-            if depth == self.depth:
-                print "[%s] %s: %s" % (self.t, m, score)
+            #if depth == self.depth:
+            #    print "[%s] %s: %s" % (self.t, m, score)
             alpha = max(alpha, score)
             if alpha >= beta:
                 break
